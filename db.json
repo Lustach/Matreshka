@@ -1,0 +1,177 @@
+{
+  "new": {
+    "title": "Новые",
+    "tasks": [
+      {
+        "title": "q4",
+        "mark": "1Ну ",
+        "state": false,
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      }
+    ],
+    "id": "new"
+  },
+  "progress": {
+    "title": "В работе",
+    "tasks": [
+      {
+        "title": "В процессе выполнения",
+        "mark": "Ну ",
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      },
+      {
+        "title": "В процессе выполнения1",
+        "mark": "1Ну ",
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      }
+    ]
+  },
+  "testing": {
+    "title": "Тестирование",
+    "tasks": [
+      {
+        "title": "q1",
+        "mark": "Ну",
+        "state": false,
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      },
+      {
+        "title": "q3",
+        "mark": "Ну",
+        "state": false,
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      },
+      {
+        "title": "q2",
+        "mark": "1Ну ",
+        "state": false,
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      },
+      {
+        "title": "тестирование",
+        "mark": "Ну ",
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      },
+      {
+        "title": "Завершённые1",
+        "mark": "1Ну ",
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      }
+    ],
+    "id": "testing"
+  },
+  "completed": {
+    "title": "Завершённые",
+    "tasks": [
+      {
+        "title": "Завершённые",
+        "mark": "Ну ",
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      },
+      {
+        "title": "Завершённые1",
+        "mark": "1Ну ",
+        "description": "ОПИСАНИЕ ЗАДАЧИ",
+        "comment": ""
+      }
+    ]
+  },
+  "all": {
+    "todo": {
+      "title": "Новые",
+      "tasks": [],
+      "id": "new"
+    },
+    "progress": {
+      "title": "В работе",
+      "tasks": [
+        {
+          "title": "q2",
+          "mark": "1Ну ",
+          "state": false,
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": ""
+        },
+        {
+          "title": "q3",
+          "mark": "Ну",
+          "state": false,
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": ""
+        },
+        {
+          "title": "q1",
+          "mark": "Ну",
+          "state": false,
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": ""
+        },
+        {
+          "title": "В процессе выполнения",
+          "mark": "Ну ",
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": "fsdafsdfasd"
+        },
+        {
+          "title": "q4",
+          "mark": "1Ну ",
+          "state": false,
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": "fasfsdfas"
+        },
+        {
+          "title": "В процессе выполнения1",
+          "mark": "1Ну ",
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": ""
+        }
+      ],
+      "id": "progress"
+    },
+    "testing": {
+      "title": "Тестирование",
+      "tasks": [
+        {
+          "title": "Завершённые1",
+          "mark": "1Ну ",
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": ""
+        },
+        {
+          "title": "тестирование",
+          "mark": "Ну ",
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": ""
+        }
+      ],
+      "id": "testing"
+    },
+    "completed": {
+      "title": "Завершённые",
+      "tasks": [
+        {
+          "title": "Завершённые",
+          "mark": "Ну ",
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": ""
+        },
+        {
+          "title": "Завершённые1",
+          "mark": "1Ну ",
+          "description": "ОПИСАНИЕ ЗАДАЧИ",
+          "comment": ""
+        }
+      ],
+      "id": "completed"
+    }
+  }
+}

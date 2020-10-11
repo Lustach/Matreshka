@@ -13,17 +13,7 @@
             width="40"
         />
       </div>
-      <router-link active-class="active_link" class="text-h4 px-4" to="/categoryList">Категории</router-link>
-      <router-link active-class="active_link" class="text-h4 px-4" to="/main">Главная</router-link>
       <v-spacer></v-spacer>
-
-      <v-btn
-          text
-          @click="clearLc()"
-      >
-        <span class="mr-2">Очистить localStorage</span>
-        <v-icon>mdi-refresh</v-icon>
-      </v-btn>
     </v-app-bar>
     <v-main>
       <router-view></router-view>
@@ -34,40 +24,25 @@
 <script>
 
 import {mapGetters} from "vuex"
-import {SET_TASKLIST} from "@/store"
+import {GET_TASKS} from "@/store"
 
 export default {
   name: 'App',
-  mounted() {
-    if (this.localStorageLength === 0) {
-      for (const key in this.tasks) {
-        if (Object.prototype.hasOwnProperty.call(this.tasks, key))
-          localStorage.setItem(key, JSON.stringify(this.tasks[key]))
-      }
-    } else {
-      this.$store.commit(SET_TASKLIST)
-    }
+  async mounted() {
+    await this.initApp()
   },
-  data: () => ({}),
+  data: () => ({
+    GET_TASKS
+  }),
   methods: {
-    clearLc() {
-      localStorage.clear()
-    }
+    async initApp() {
+      await this.$store.dispatch(this.GET_TASKS)
+    },
   },
   computed: {
     ...mapGetters([
       'tasks'
     ]),
-    localStorageLength() {
-      let allStrings = 0
-      for (let key in this.tasks) {
-        if (Object.prototype.hasOwnProperty.call(this.tasks, key)) {
-          if (Object.prototype.hasOwnProperty.call(localStorage, key))
-            allStrings++
-        }
-      }
-      return allStrings
-    }
   }
 }
 </script>

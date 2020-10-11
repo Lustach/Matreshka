@@ -7,47 +7,28 @@
         </v-card-title>
       </v-col>
     </v-row>
-    <draggable :list="data.tasks" class="px-4" group="tasks">
+    <draggable v-model="data.tasks" class="px-4" group="tasks" @change="updateTasks()">
       <v-card-text v-for="(e,i) in data.tasks" :key="i" class="py-0 mb-2 test">
         <v-row class="d-flex align-center">
           <v-col class="d-flex flex-row align-center" cols="12">
-            <v-text-field v-model="e.title" :disabled="e.state" class="custom-input__title pr-3" hide-details solo></v-text-field>
-            <v-menu offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn v-bind="attrs" v-on="on" color="pink" icon small>
-                  <v-icon>mdi-dots-vertical</v-icon>
-                </v-btn>
-              </template>
-              <v-list>
-                <v-list-item @click="changeState(i)">
-                  <v-list-item-title class="d-flex align-center justify-lg-space-between"><span v-show="e.state===true">Выполнено</span>
-                    <span v-show="e.state===false">Не выполнено</span>
-                    <v-checkbox v-model="e.state" class="ml-2"></v-checkbox>
-                  </v-list-item-title>
-                </v-list-item>
-                <v-list-item @click="deleteOneTask(i,data.title)">
-                  <v-list-item-title>Удалить</v-list-item-title>
-                </v-list-item>
-                <v-list-item @click="openTask(i,data.title)">
-                  <v-list-item-title>Подробнее</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
+            <v-text-field @click="openTask(i)" v-model="e.title" :disabled="e.state" class="custom-input__title pr-3" hide-details solo></v-text-field>
           </v-col>
         </v-row>
       </v-card-text>
     </draggable>
+    <About :dialog="dialog" v-if="dialog" :task="taskIndexForDialog" @closeDialog="closeDialog()"></About>
   </v-card>
 </template>
 <script>
 import draggable from 'vuedraggable'
-import {DELETE_TASK, UPDATE_LC} from '../store/index'
+import {UPDATE_TASKS} from '../store/index'
 import {mapGetters} from 'vuex'
 
 export default {
   name: 'TaskList',
   components: {
     draggable,
+    About: () => import('@/components/About')
   },
   props: {
     data: {
@@ -57,35 +38,25 @@ export default {
     }
   },
   data: () => ({
-    items: [
-      { title: 'edit', action: 'changeState' },
-      { title: 'delete', action: 'delete' }
-    ],
-    DELETE_TASK: DELETE_TASK
+    dialog: false,
+    taskIndexForDialog: null,
+    UPDATE_TASKS: UPDATE_TASKS
   }),
   methods: {
-    deleteOneTask(index, category) {
-      if (this.$route.params.id)
-        this.$store.dispatch(this.DELETE_TASK, { categoryId: this.$route.params.id, index: index })
-      else {
-        this.$store.dispatch(this.DELETE_TASK, { categoryId: category, index: index })
-      }
+    openTask(i) {
+      this.dialog = true
+      this.taskIndexForDialog = this.data.tasks[i]
     },
-    changeState(index) {
-      this.data.tasks[index].state = !this.data.tasks[index].state
-      this.$set(this.data.tasks, index, this.data.tasks[index])
-      this.$store.dispatch(UPDATE_LC, { categoryId: this.data.title })
+    updateTasks(){
+      this.$store.dispatch(UPDATE_TASKS)
     },
-    openTask(index, category) {
-      if (this.$route.name === 'TaskAbout')
-        this.$router.push(this.$route.path + '/title=' + this.data.tasks[index].title)
-      if (this.$route.name === 'Main') {
-        this.$router.push(`/tasks_by_category=${category}/title=${this.data.tasks[index].title}`)
-      }
+    closeDialog(){
+      this.dialog=false
+      this.updateTasks()
     }
   },
   computed: {
-    ...mapGetters(["tasksByCategory"])
+    ...mapGetters(["tasks"]),
   }
 }
 </script>
