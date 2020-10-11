@@ -2,6 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <v-col v-for="(e) in tasks" :key="e.id">
+        {{e}}
         <taskList :data="e"></taskList>
       </v-col>
     </v-row>
